@@ -1,0 +1,5 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Login</title><link rel="stylesheet" href="css/style.css"></head>
+<body><nav><a class="logo" href="index.html">Job<span>Connect</span></a><div><a href="index.html">Home</a><a href="jobs.html">Find Jobs</a><a href="register.html">Register</a></div></nav>
+<div class="auth"><div class="card"><h1>Login</h1><p>Access your JobConnect account.</p><form id="form"><input id="email" type="email" placeholder="Email" required><input id="password" type="password" placeholder="Password" required><button class="button">Login</button></form><p id="msg"></p><a href="register.html">Create an account</a></div></div>
+<script>form.onsubmit=e=>{e.preventDefault();fetch("/api/users/login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email:email.value,password:password.value})}).then(async r=>{let d=await r.json().catch(()=>null);if(r.ok){localStorage.user=JSON.stringify(d);location.href="dashboard.html"}else msg.textContent=d||"Login failed"})}</script></body></html>

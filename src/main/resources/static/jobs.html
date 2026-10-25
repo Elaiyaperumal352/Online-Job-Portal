@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Find Jobs</title><link rel="stylesheet" href="css/style.css"></head>
+<body><nav><a class="logo" href="index.html">Job<span>Connect</span></a><div><a href="index.html">Home</a><a href="jobs.html">Find Jobs</a><a href="post-job.html">Post Job</a><a href="login.html">Login</a></div></nav>
+<section class="page"><small>CAREER OPPORTUNITIES</small><h1>Find Your Next Job</h1><p>Search available positions and apply online.</p></section>
+<section class="container"><div class="filter"><input id="keyword" placeholder="Search title or location"><button class="button" onclick="search()">Search</button></div><div id="list" class="grid"></div></section>
+<footer>© 2026 JobConnect</footer><script src="js/app.js"></script><script>
+let p=new URLSearchParams(location.search);keyword.value=p.get("keyword")||"";search();function search(){loadJobs("list",keyword.value)}
+</script></body></html>

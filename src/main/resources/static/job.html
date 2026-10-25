@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Job Details</title><link rel="stylesheet" href="css/style.css"></head>
+<body><nav><a class="logo" href="index.html">Job<span>Connect</span></a><div><a href="index.html">Home</a><a href="jobs.html">Find Jobs</a><a href="login.html">Login</a></div></nav>
+<section class="container detail" id="detail"></section><footer>© 2026 JobConnect</footer>
+<script>
+let id=new URLSearchParams(location.search).get("id");
+fetch("/api/jobs/"+id).then(r=>r.json()).then(j=>{detail.innerHTML=`<span class="badge">${j.jobType}</span><h1>${j.title}</h1><h3>${j.company}</h3><p>📍 ${j.location} &nbsp; 💰 ${j.salary}</p><hr><h2>Description</h2><p>${j.description}</p><h2>Required Skills</h2><p>${j.skills}</p><button class="button" onclick="apply()">Apply Now</button>`});
+function apply(){let name=prompt("Enter your name");let email=prompt("Enter your email");if(name&&email)fetch("/api/applications",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({jobId:Number(id),applicantName:name,email:email})}).then(()=>alert("Application submitted successfully!"))}
+</script></body></html>
